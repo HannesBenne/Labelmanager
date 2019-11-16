@@ -1,0 +1,7 @@
+
+<web-app>
+<display-name>Label-Manager</display-name>
+<welcome-file-list>
+    <welcome-file>LabelControllerServlet</welcome-file>
+</welcome-file-list>
+</web-app>

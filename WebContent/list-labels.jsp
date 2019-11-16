@@ -35,13 +35,20 @@
 				</tr>
 				
 				<c:forEach var = "label" items = "${labelList}">
-					<!-- add url tags -->
+					<c:url var = "updateLink" value = "LabelControllerServlet" >
+						<c:param name = "command" value ="LOAD"/>
+						<c:param name = "id" value ="${label.id }"/>
+					</c:url>	
+					<c:url var = "deleteLink" value = "LabelControllerServlet" >
+						<c:param name = "command" value ="DELETE"/>
+						<c:param name = "id" value ="${label.id }"/>
+					</c:url>
 					<tr>
 						<td>${label.artikelnummer}</td>
 						<td>${label.sortiment}</td>
 						<td>${label.produktname} ${label.namenszusatz}</td>						
-						<td><a href= "">Ändern</a> | 
-						<a href= "">Löschen</a></td>						
+						<td><a href= "${updateLink }">Ändern</a> | 
+						<a href= "${deleteLink }" onclick="if(!(confirm('Are you sure you want to delete this student?'))) return false">Löschen</a></td>						
 					</tr>
 				</c:forEach>
 				

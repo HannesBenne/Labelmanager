@@ -86,8 +86,6 @@ public class DbUtil {
 	}
 
 	public void addLabel(Label label) throws SQLException {
-		System.out.println("addLabel in dbUtil called");
-		System.out.println("addLabel in dbUtil called" + label.toString());
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -126,5 +124,24 @@ public class DbUtil {
 		}
 		
 	}
+
+	public void deleteLabel(String id) throws SQLException {
+		int intID = Integer.parseInt(id);
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = datasource.getConnection();
+			String sql = "delete from label where id = ?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1,intID);
+			preparedStatement.execute();
+		}finally {
+			close(connection, preparedStatement, null);
+		}
+	}
+
+
 }
 

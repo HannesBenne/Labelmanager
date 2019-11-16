@@ -48,6 +48,18 @@ public class LabelControllerServlet extends HttpServlet {
 			case "LIST":
 				listLabels(request, response);
 				break;
+			case "LOAD":
+				//to do
+				break;
+			case "UPDATE":
+				//to do
+				break;
+			case "DELETE":
+				deleteLabel(request, response);
+				break;
+			case "SEARCH":
+				//to do
+				break;
 			default:
 				listLabels(request, response);
 			}
@@ -58,6 +70,14 @@ public class LabelControllerServlet extends HttpServlet {
 	}
 
 	
+	private void deleteLabel(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		String id = request.getParameter("id");
+		dbUtil.deleteLabel(id);
+		listLabels(request, response);
+		
+	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
