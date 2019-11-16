@@ -45,7 +45,7 @@
 					
 					<tr>
 						<td><label>Zutatenliste</label></td>
-						<td><input type = "text" name = "zutatenliste" style="height:200px;"></td>
+						<td><textarea rows="5" cols="30" name = "zutatenliste"></textarea></td>
 					</tr>
 					<tr>
 						<td><label>Grammatur</label></td>

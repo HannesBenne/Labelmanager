@@ -48,7 +48,7 @@
 						<td>${label.sortiment}</td>
 						<td>${label.produktname} ${label.namenszusatz}</td>						
 						<td><a href= "${updateLink }">Ändern</a> | 
-						<a href= "${deleteLink }" onclick="if(!(confirm('Are you sure you want to delete this student?'))) return false">Löschen</a></td>						
+						<a href= "${deleteLink }" onclick="if(!(confirm('Möchtest du dieses Label wirklich löschen?'))) return false">Löschen</a></td>						
 					</tr>
 				</c:forEach>
 				

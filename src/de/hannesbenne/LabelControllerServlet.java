@@ -49,10 +49,10 @@ public class LabelControllerServlet extends HttpServlet {
 				listLabels(request, response);
 				break;
 			case "LOAD":
-				//to do
+				loadLabel(request,response);
 				break;
 			case "UPDATE":
-				//to do
+				updateLabel(request,response);
 				break;
 			case "DELETE":
 				deleteLabel(request, response);
@@ -68,16 +68,8 @@ public class LabelControllerServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 	
-	private void deleteLabel(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-		String id = request.getParameter("id");
-		dbUtil.deleteLabel(id);
-		listLabels(request, response);
-		
-	}
-
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
@@ -98,10 +90,58 @@ public class LabelControllerServlet extends HttpServlet {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 	} 
+
+	
+	private void updateLabel(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		int grammatur = Integer.parseInt(request.getParameter("grammatur"));
+		String artikelnummer = request.getParameter("artikelnummer");
+		String sortiment = request.getParameter("sortiment");
+		String produktname = request.getParameter("produktbezeichnung");
+		String namenszusatz = request.getParameter("namenszusatz"); 
+		String zutatenliste = request.getParameter("zutatenliste");
+		String barcode = request.getParameter("barcode");
+		
+		double energieJule = Double.parseDouble(request.getParameter("energie_joule"));
+		double energieKalorien = Double.parseDouble(request.getParameter("energie_kalorien"));
+		double anteilFett = Double.parseDouble(request.getParameter("fett"));
+		double anteilGesaettigteFettsaeure = Double.parseDouble(request.getParameter("gesaettigte_fettsaeuren"));
+		double kohlenhydrate = Double.parseDouble(request.getParameter("kohlenhydrate"));
+		double zuckerAnteil = Double.parseDouble(request.getParameter("zucker"));
+		double eiweissAnteil = Double.parseDouble(request.getParameter("eiweiss"));
+		double salzAnteil = Double.parseDouble(request.getParameter("salz"));
+		
+		NutritionFacts nutritionFacts = new NutritionFacts(energieJule, energieKalorien, anteilFett
+				, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil, eiweissAnteil, salzAnteil);
+		
+		Label label = new Label(id, grammatur, artikelnummer, sortiment, produktname, namenszusatz
+				, zutatenliste, barcode, nutritionFacts);
+		
+		System.out.println("add label" + label.toString());
+		
+		dbUtil.updateLabel(label);
+		 
+		listLabels(request, response);
+		
+	}
+
+
+	private void loadLabel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Label label = dbUtil.getLabel(id);
+		request.setAttribute("label", label);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/update-label.jsp");
+		requestDispatcher.forward(request, response); 
+	}
+
+
+	private void deleteLabel(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+		String id = request.getParameter("id");
+		dbUtil.deleteLabel(id);
+		listLabels(request, response);
+		
+	}
 	
 	
 	private void addLabel(HttpServletRequest request, HttpServletResponse response) 

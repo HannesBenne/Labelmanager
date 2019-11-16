@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+
 public class DbUtil {
 	private DataSource datasource;
 
@@ -118,7 +119,7 @@ public class DbUtil {
 			preparedStatement.setDouble(15, label.getNutritionFacts().getSalzAnteil());
 			
 			preparedStatement.execute();
-			System.out.println(preparedStatement);
+
 		}finally {
 			close(connection, preparedStatement, null); 
 		}
@@ -141,6 +142,97 @@ public class DbUtil {
 			close(connection, preparedStatement, null);
 		}
 	}
+
+	public Label getLabel(int id) throws SQLException {
+		Label label = null;
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String sql = "select * from label where id = ?;";
+		try {
+			connection = datasource.getConnection();
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			resultSet = preparedStatement.executeQuery();
+			
+			if (resultSet.next()) {
+				id = resultSet.getInt("id");
+				int grammatur = resultSet.getInt("grammatur");
+				String artikelnummer = resultSet.getString("artikelnummer");
+				String sortiment = resultSet.getString("sortiment");
+				String produktname = resultSet.getString("produktname");
+				String namenszusatz = resultSet.getString("namenszusatz"); 
+				String zutatenliste = resultSet.getString("zutatenliste");
+				String barcode = resultSet.getString("barcode");
+				
+				double energieJule = resultSet.getDouble("energie_joule");
+				double energieKalorien = resultSet.getDouble("energie_kalorien");
+				double anteilFett = resultSet.getDouble("fett");
+				double anteilGesaettigteFettsaeure = resultSet.getDouble("gesaettigte_fettsaeuren");
+				double kohlenhydrate = resultSet.getDouble("kohlenhydrate");
+				double zuckerAnteil = resultSet.getDouble("zucker");
+				double eiweissAnteil = resultSet.getDouble("eiweiss");
+				double salzAnteil = resultSet.getDouble("salz");
+				
+				NutritionFacts nutritionFacts = new NutritionFacts(energieJule, energieKalorien
+						, anteilFett, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil
+						, eiweissAnteil, salzAnteil);
+				
+				label = new Label(id, grammatur, artikelnummer, sortiment, produktname
+						, namenszusatz, zutatenliste, barcode, nutritionFacts);
+
+				
+			} else {
+				throw new SQLException("Could not find student id " + id);
+			}
+		} finally {
+			close(connection, preparedStatement, resultSet); 
+		}
+		return label;
+	}
+
+	public void updateLabel(Label label) throws SQLException {
+		Connection connection = null;
+		PreparedStatement  preparedStatement = null;
+		try {
+			connection = datasource.getConnection();
+			String sql = "update label set"
+					+" grammatur=?, artikelnummer=?, sortiment=?, produktname=?, namenszusatz=?, zutatenliste=?, barcode=?"
+					+ ", energie_joule=?, energie_kalorien=?, fett=?, gesaettigte_fettsaeuren=?, kohlenhydrate=?"
+					+ ", zucker=?, eiweiss=?, salz=?"
+					+  "where id= ?;";
+					
+			
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, label.getGrammatur());
+			preparedStatement.setString(2, label.getArtikelnummer());
+			preparedStatement.setString(3, label.getSortiment());
+			preparedStatement.setString(4, label.getProduktname());
+			preparedStatement.setString(5, label.getNamenszusatz());
+			preparedStatement.setString(6, label.getZutatenliste());
+			preparedStatement.setString(7, label.getBarcode());
+			preparedStatement.setDouble(8, label.getNutritionFacts().getEnergieJule());
+			preparedStatement.setDouble(9, label.getNutritionFacts().getEnergieKalorien());
+			preparedStatement.setDouble(10, label.getNutritionFacts().getAnteilFett());
+			preparedStatement.setDouble(11, label.getNutritionFacts().getAnteilGesaettigteFettsaeure());
+			preparedStatement.setDouble(12, label.getNutritionFacts().getKohlenhydrate());
+			preparedStatement.setDouble(13, label.getNutritionFacts().getZuckerAnteil());
+			preparedStatement.setDouble(14, label.getNutritionFacts().getEiweissAnteil());
+			preparedStatement.setDouble(15, label.getNutritionFacts().getSalzAnteil());
+			preparedStatement.setInt(16, label.getId());
+			
+			System.out.println(preparedStatement);
+			
+			preparedStatement.execute();
+		}finally {
+			close(connection, preparedStatement, null);
+		}
+		
+	}
+
+
 
 
 }
