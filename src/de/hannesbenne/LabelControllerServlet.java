@@ -58,7 +58,7 @@ public class LabelControllerServlet extends HttpServlet {
 				deleteLabel(request, response);
 				break;
 			case "SEARCH":
-				//to do
+				searchLabel(request,response);
 				break;
 			default:
 				listLabels(request, response);
@@ -69,7 +69,7 @@ public class LabelControllerServlet extends HttpServlet {
 		}
 	}
 	
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
@@ -91,6 +91,15 @@ public class LabelControllerServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	} 
+	
+	
+	private void searchLabel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		String searchID = request.getParameter("searchValue");
+		List<Label> labels = dbUtil.searchLabels(searchID);
+		request.setAttribute("labelList", labels);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("list-labels.jsp");
+		requestDispatcher.forward(request, response);
+	}
 
 	
 	private void updateLabel(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

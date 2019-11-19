@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<div id = "border-box">
+
 	<div id = "list-wrapper">
 		<div id = "wrapper">
 			<div id = "header">
@@ -20,10 +22,15 @@
 	
 	<div id = "container">
 		<div id = "content">
-			<!-- add search bar-->
+			<form>
+				<input type = "hidden" name="command" value="SEARCH">
+				<input type = "text" name ="searchValue">
+				<input type = "submit" value="Suchen" class = "add-label-button">
+			</form>
+			
 			
 			<form>
-			<input type = "button" value = "Label hinzufügen" onClick = "window.location.href='add-label.jsp';return false;">
+			<input type = "button" value = "Label hinzufügen" class = "add-label-button" onClick = "window.location.href='add-label.jsp';return false;">
 			</form>
 			
 			<table>
@@ -56,5 +63,7 @@
 			
 		</div>
 	</div>
+	
+</div>
 </body>
 </html>

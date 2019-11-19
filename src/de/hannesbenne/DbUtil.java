@@ -232,6 +232,64 @@ public class DbUtil {
 		
 	}
 
+	public List<Label> searchLabels(String searchID) throws SQLException {
+		System.out.println("dbUtil: " + searchID);
+		List<Label> labels = new ArrayList<Label>();
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = datasource.getConnection();
+			
+			if(null != searchID && !"".equals(searchID.trim())) {
+				String sql = "select * from label where artikelnummer = ?;";
+				preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, Integer.parseInt(searchID));
+			}else {
+				String sql = "select * from label";
+				preparedStatement = connection.prepareStatement(sql);
+			}
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int id = resultSet.getInt("id");
+				int grammatur = resultSet.getInt("grammatur");
+				String artikelnummer = resultSet.getString("artikelnummer");
+				String sortiment = resultSet.getString("sortiment");
+				String produktname = resultSet.getString("produktname");
+				String namenszusatz = resultSet.getString("namenszusatz"); 
+				String zutatenliste = resultSet.getString("zutatenliste");
+				String barcode = resultSet.getString("barcode");
+				
+				double energieJule = resultSet.getDouble("energie_joule");
+				double energieKalorien = resultSet.getDouble("energie_kalorien");
+				double anteilFett = resultSet.getDouble("fett");
+				double anteilGesaettigteFettsaeure = resultSet.getDouble("gesaettigte_fettsaeuren");
+				double kohlenhydrate = resultSet.getDouble("kohlenhydrate");
+				double zuckerAnteil = resultSet.getDouble("zucker");
+				double eiweissAnteil = resultSet.getDouble("eiweiss");
+				double salzAnteil = resultSet.getDouble("salz");
+				
+				NutritionFacts nutritionFacts = new NutritionFacts(energieJule, energieKalorien
+						, anteilFett, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil
+						, eiweissAnteil, salzAnteil);
+				
+				Label label = new Label(id, grammatur, artikelnummer, sortiment, produktname
+						, namenszusatz, zutatenliste, barcode, nutritionFacts);
+				
+				labels.add(label);
+			}
+			
+		}finally {
+			close(connection, preparedStatement, resultSet);
+		}
+		System.out.println("dbUtil: " + labels);
+		return labels;
+	}
+
 
 
 
