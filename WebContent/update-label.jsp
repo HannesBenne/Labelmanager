@@ -24,7 +24,6 @@
 			<form action="LabelControllerServlet" method="GET">
 			<input type="hidden" name = "command" value = "UPDATE"/>
 			<input type="hidden" name = "id" value = "${label.id}"/>
-			"${label.id}"
 			<table>
 				<tbody>
 					<tr>
