@@ -11,6 +11,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 
+
+
 public class DbUtil {
 	private DataSource datasource;
 
@@ -37,8 +39,10 @@ public class DbUtil {
 				int grammatur = resultSet.getInt("grammatur");
 				String artikelnummer = resultSet.getString("artikelnummer");
 				String sortiment = resultSet.getString("sortiment");
+				String layout = resultSet.getString("layout");
 				String produktname = resultSet.getString("produktname");
-				String namenszusatz = resultSet.getString("namenszusatz"); 
+				String namenszusatz = resultSet.getString("namenszusatz");
+				String bodentext = resultSet.getString("bodentext");
 				String zutatenliste = resultSet.getString("zutatenliste");
 				String barcode = resultSet.getString("barcode");
 				
@@ -55,8 +59,8 @@ public class DbUtil {
 						, anteilFett, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil
 						, eiweissAnteil, salzAnteil);
 				
-				Label label = new Label(id, grammatur, artikelnummer, sortiment, produktname
-						, namenszusatz, zutatenliste, barcode, nutritionFacts);
+				Label label = new Label(id, grammatur, artikelnummer, sortiment, layout, produktname,
+						namenszusatz, bodentext, zutatenliste, barcode, nutritionFacts);
 				
 				labels.add(label);
 			}
@@ -94,29 +98,31 @@ public class DbUtil {
 		try {
 			connection = datasource.getConnection();
 			String sql = "insert into label"
-					+"(grammatur, artikelnummer, sortiment, produktname, namenszusatz, zutatenliste, barcode"
+					+"(grammatur, artikelnummer, sortiment, layout, produktname, namenszusatz, bodentext, zutatenliste, barcode"
 					+ ", energie_joule, energie_kalorien, fett, gesaettigte_fettsaeuren, kohlenhydrate"
 					+ ", zucker, eiweiss, salz)"
 					+  "values"
-					+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			preparedStatement = connection.prepareStatement(sql);
 			
 			preparedStatement.setInt(1, label.getGrammatur());
 			preparedStatement.setString(2, label.getArtikelnummer());
 			preparedStatement.setString(3, label.getSortiment());
-			preparedStatement.setString(4, label.getProduktname());
-			preparedStatement.setString(5, label.getNamenszusatz());
-			preparedStatement.setString(6, label.getZutatenliste());
-			preparedStatement.setString(7, label.getBarcode());
-			preparedStatement.setDouble(8, label.getNutritionFacts().getEnergieJule());
-			preparedStatement.setDouble(9, label.getNutritionFacts().getEnergieKalorien());
-			preparedStatement.setDouble(10, label.getNutritionFacts().getAnteilFett());
-			preparedStatement.setDouble(11, label.getNutritionFacts().getAnteilGesaettigteFettsaeure());
-			preparedStatement.setDouble(12, label.getNutritionFacts().getKohlenhydrate());
-			preparedStatement.setDouble(13, label.getNutritionFacts().getZuckerAnteil());
-			preparedStatement.setDouble(14, label.getNutritionFacts().getEiweissAnteil());
-			preparedStatement.setDouble(15, label.getNutritionFacts().getSalzAnteil());
+			preparedStatement.setString(4, label.getLayout());
+			preparedStatement.setString(5, label.getProduktname());
+			preparedStatement.setString(6, label.getNamenszusatz());
+			preparedStatement.setString(7, label.getBodentext());
+			preparedStatement.setString(8, label.getZutatenliste());
+			preparedStatement.setString(9, label.getBarcode());
+			preparedStatement.setDouble(10, label.getNutritionFacts().getEnergieJule());
+			preparedStatement.setDouble(11, label.getNutritionFacts().getEnergieKalorien());
+			preparedStatement.setDouble(12, label.getNutritionFacts().getAnteilFett());
+			preparedStatement.setDouble(13, label.getNutritionFacts().getAnteilGesaettigteFettsaeure());
+			preparedStatement.setDouble(14, label.getNutritionFacts().getKohlenhydrate());
+			preparedStatement.setDouble(15, label.getNutritionFacts().getZuckerAnteil());
+			preparedStatement.setDouble(16, label.getNutritionFacts().getEiweissAnteil());
+			preparedStatement.setDouble(17, label.getNutritionFacts().getSalzAnteil());
 			
 			preparedStatement.execute();
 
@@ -161,8 +167,10 @@ public class DbUtil {
 				int grammatur = resultSet.getInt("grammatur");
 				String artikelnummer = resultSet.getString("artikelnummer");
 				String sortiment = resultSet.getString("sortiment");
+				String layout = resultSet.getString("layout");
 				String produktname = resultSet.getString("produktname");
-				String namenszusatz = resultSet.getString("namenszusatz"); 
+				String namenszusatz = resultSet.getString("namenszusatz");
+				String bodentext = resultSet.getString("bodentext");
 				String zutatenliste = resultSet.getString("zutatenliste");
 				String barcode = resultSet.getString("barcode");
 				
@@ -179,8 +187,8 @@ public class DbUtil {
 						, anteilFett, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil
 						, eiweissAnteil, salzAnteil);
 				
-				label = new Label(id, grammatur, artikelnummer, sortiment, produktname
-						, namenszusatz, zutatenliste, barcode, nutritionFacts);
+				label = new Label(id, grammatur, artikelnummer, sortiment, layout, produktname, namenszusatz, bodentext,
+						zutatenliste, barcode, nutritionFacts);
 
 				
 			} else {
@@ -198,9 +206,9 @@ public class DbUtil {
 		try {
 			connection = datasource.getConnection();
 			String sql = "update label set"
-					+" grammatur=?, artikelnummer=?, sortiment=?, produktname=?, namenszusatz=?, zutatenliste=?, barcode=?"
-					+ ", energie_joule=?, energie_kalorien=?, fett=?, gesaettigte_fettsaeuren=?, kohlenhydrate=?"
-					+ ", zucker=?, eiweiss=?, salz=?"
+					+" grammatur=?, artikelnummer=?, sortiment=?, layout = ?, produktname=?, namenszusatz=?, bodentext = ?, zutatenliste=?, "
+					+ "barcode=?, energie_joule=?, energie_kalorien=?, fett=?, gesaettigte_fettsaeuren=?, kohlenhydrate=?, "
+					+ "zucker=?, eiweiss=?, salz=?"
 					+  "where id= ?;";
 					
 			
@@ -209,21 +217,21 @@ public class DbUtil {
 			preparedStatement.setInt(1, label.getGrammatur());
 			preparedStatement.setString(2, label.getArtikelnummer());
 			preparedStatement.setString(3, label.getSortiment());
-			preparedStatement.setString(4, label.getProduktname());
-			preparedStatement.setString(5, label.getNamenszusatz());
-			preparedStatement.setString(6, label.getZutatenliste());
-			preparedStatement.setString(7, label.getBarcode());
-			preparedStatement.setDouble(8, label.getNutritionFacts().getEnergieJule());
-			preparedStatement.setDouble(9, label.getNutritionFacts().getEnergieKalorien());
-			preparedStatement.setDouble(10, label.getNutritionFacts().getAnteilFett());
-			preparedStatement.setDouble(11, label.getNutritionFacts().getAnteilGesaettigteFettsaeure());
-			preparedStatement.setDouble(12, label.getNutritionFacts().getKohlenhydrate());
-			preparedStatement.setDouble(13, label.getNutritionFacts().getZuckerAnteil());
-			preparedStatement.setDouble(14, label.getNutritionFacts().getEiweissAnteil());
-			preparedStatement.setDouble(15, label.getNutritionFacts().getSalzAnteil());
-			preparedStatement.setInt(16, label.getId());
-			
-			System.out.println(preparedStatement);
+			preparedStatement.setString(4, label.getLayout());
+			preparedStatement.setString(5, label.getProduktname());
+			preparedStatement.setString(6, label.getNamenszusatz());
+			preparedStatement.setString(7, label.getBodentext());
+			preparedStatement.setString(8, label.getZutatenliste());
+			preparedStatement.setString(9, label.getBarcode());
+			preparedStatement.setDouble(10, label.getNutritionFacts().getEnergieJule());
+			preparedStatement.setDouble(11, label.getNutritionFacts().getEnergieKalorien());
+			preparedStatement.setDouble(12, label.getNutritionFacts().getAnteilFett());
+			preparedStatement.setDouble(13, label.getNutritionFacts().getAnteilGesaettigteFettsaeure());
+			preparedStatement.setDouble(14, label.getNutritionFacts().getKohlenhydrate());
+			preparedStatement.setDouble(15, label.getNutritionFacts().getZuckerAnteil());
+			preparedStatement.setDouble(16, label.getNutritionFacts().getEiweissAnteil());
+			preparedStatement.setDouble(17, label.getNutritionFacts().getSalzAnteil());
+			preparedStatement.setInt(18, label.getId());
 			
 			preparedStatement.execute();
 		}finally {
@@ -233,7 +241,7 @@ public class DbUtil {
 	}
 
 	public List<Label> searchLabels(String searchID) throws SQLException {
-		System.out.println("dbUtil: " + searchID);
+		
 		List<Label> labels = new ArrayList<Label>();
 		
 		Connection connection = null;
@@ -259,8 +267,10 @@ public class DbUtil {
 				int grammatur = resultSet.getInt("grammatur");
 				String artikelnummer = resultSet.getString("artikelnummer");
 				String sortiment = resultSet.getString("sortiment");
+				String layout = resultSet.getString("layout");
 				String produktname = resultSet.getString("produktname");
 				String namenszusatz = resultSet.getString("namenszusatz"); 
+				String bodentext = resultSet.getString("bodentext");
 				String zutatenliste = resultSet.getString("zutatenliste");
 				String barcode = resultSet.getString("barcode");
 				
@@ -277,8 +287,8 @@ public class DbUtil {
 						, anteilFett, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil
 						, eiweissAnteil, salzAnteil);
 				
-				Label label = new Label(id, grammatur, artikelnummer, sortiment, produktname
-						, namenszusatz, zutatenliste, barcode, nutritionFacts);
+				Label label = new Label(id, grammatur, artikelnummer, sortiment, layout, produktname, namenszusatz, bodentext, 
+						zutatenliste, barcode, nutritionFacts);
 				
 				labels.add(label);
 			}
@@ -286,7 +296,7 @@ public class DbUtil {
 		}finally {
 			close(connection, preparedStatement, resultSet);
 		}
-		System.out.println("dbUtil: " + labels);
+		
 		return labels;
 	}
 

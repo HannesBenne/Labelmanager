@@ -4,9 +4,10 @@ form {
 
 label {
 	font-size: 16px; 
-	width: 100px; 
+	width: 200px; 
 	display: block; 
-	text-align: right;
+	text-align: left;
+	margin-left: 12px;
 	margin-right: 10px;
 	margin-top: 8px;
 	margin-bottom: 8px;
@@ -28,16 +29,58 @@ input {
 	background: #cccccc;
 }
 
-table {   
-	border-style:none;
-	width:50%;
+#border-box{
+	margin: auto;
+	width: 50%;
+	border: 1px solid #0775d3;
 }
 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #FFFFFF}
+table {   
+	border-collapse:collapse;
+	border-bottom:1px solid gray;
+	font-family: Tahoma,Verdana,Segoe,sans-serif;
+	width:100%;
+}
+ 
+th {
+	border-bottom:1px solid gray;
+	background:none repeat scroll 0 0 #0775d3;
+	padding:10px;
+	color: #FFFFFF;
+}
 
 tr {
-	border-style:none;
-	text-align:left;	
+	border-top:1px solid gray;
+	text-align:center;	
 }
 	
+#wrapper {
+	width: 100%;
+	 margin-top: 0px; 
+	 }
+#header {
+	width: 100%; 
+	background: #0775d3; 
+	margin-top: 0px; 
+	padding:15px 0px 15px 0px;}
+	
+#header h2 {
+	width: 100%;
+	margin:auto;
+	margin-left:5px; 
+	color: #FFFFFF;
+	}
+	
+#container {
+	width: 100%;
+	margin:auto
+	}
+	
+#container h3 {
+	margin-left: 12px;
+	color: #000;
+	}
+	
+#container #content {
+	margin-top: 20px;
+	}

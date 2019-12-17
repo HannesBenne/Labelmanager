@@ -37,6 +37,7 @@
 				<tr>
 					<th>Artikelnummer</th>
 					<th>Sortiment</th>
+					<th>Layout ID</th>
 					<th>Produktname</th>
 					<th>Aktion</th>
 				</tr>
@@ -53,6 +54,7 @@
 					<tr>
 						<td>${label.artikelnummer}</td>
 						<td>${label.sortiment}</td>
+						<td>${label.layout}</td>
 						<td>${label.produktname} ${label.namenszusatz}</td>						
 						<td><a href= "${updateLink }">Ändern</a> | 
 						<a href= "${deleteLink }" onclick="if(!(confirm('Möchtest du dieses Label wirklich löschen?'))) return false">Löschen</a></td>						

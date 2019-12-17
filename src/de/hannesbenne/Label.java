@@ -5,6 +5,8 @@ public class Label {
 	private int grammatur;
 	private String artikelnummer;
 	private String sortiment;
+	private String bodentext;
+	private String layout;
 	private String produktname;
 	private String namenszusatz;
 	private String zutatenliste;
@@ -13,64 +15,35 @@ public class Label {
 	
 	
 	
-	public Label(int id, int grammatur, String artikelnummer, String sortiment, String produktname, String namenszusatz,
-			String zutatenliste, String barcode, NutritionFacts nutritionFacts) {
+	public Label(int id, int grammatur, String artikelnummer, String sortiment, String layout, String produktname,
+			String namenszusatz, String bodentext, String zutatenliste, String barcode, NutritionFacts nutritionFacts) {
 		this.id = id;
 		this.grammatur = grammatur;
 		this.artikelnummer = artikelnummer;
 		this.sortiment = sortiment;
+		this.layout = layout;
 		this.produktname = produktname;
 		this.namenszusatz = namenszusatz;
+		this.bodentext = bodentext;
 		this.zutatenliste = zutatenliste;
 		this.barcode = barcode;
 		this.nutritionFacts = nutritionFacts;
 	}
 
-
-	public Label(int id, int grammatur, String artikelnummer, String sortiment, String produktname, String namenszusatz,
-			String zutatenliste, String barcode, NutritionFacts nutritionFacts, double energieJule, double energieKalorien, double anteilFett,
-			double anteilGesaettigteFettsaeure, double kohlenhydrate, double zuckerAnteil, double eiweissAnteil,
-			double salzAnteil) {
-		this.id = id;
-		this.grammatur = grammatur;
-		this.artikelnummer = artikelnummer;
-		this.sortiment = sortiment;
-		this.produktname = produktname;
-		this.namenszusatz = namenszusatz;
-		this.zutatenliste = zutatenliste;
-		this.barcode = barcode;
-		this.nutritionFacts = new NutritionFacts(energieJule, energieKalorien, anteilFett,
-				anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil, eiweissAnteil,
-				salzAnteil);
-	}
 	
-	public Label(int grammatur, String artikelnummer, String sortiment, String produktname, String namenszusatz,
-			String zutatenliste, String barcode, NutritionFacts nutritionFacts) {
+	public Label(int grammatur, String artikelnummer, String sortiment, String layout, String produktname,
+			String namenszusatz, String bodentext, String zutatenliste, String barcode, NutritionFacts nutritionFacts) {
 		this.grammatur = grammatur;
 		this.artikelnummer = artikelnummer;
 		this.sortiment = sortiment;
+		this.layout = layout;
 		this.produktname = produktname;
 		this.namenszusatz = namenszusatz;
+		this.bodentext = bodentext;
 		this.zutatenliste = zutatenliste;
 		this.barcode = barcode;
 		this.nutritionFacts = nutritionFacts;
-	}
 
-
-	public Label(int grammatur, String artikelnummer, String sortiment, String produktname, String namenszusatz,
-			String zutatenliste, String barcode, NutritionFacts nutritionFacts, double energieJule, double energieKalorien, double anteilFett,
-			double anteilGesaettigteFettsaeure, double kohlenhydrate, double zuckerAnteil, double eiweissAnteil,
-			double salzAnteil) {
-		this.grammatur = grammatur;
-		this.artikelnummer = artikelnummer;
-		this.sortiment = sortiment;
-		this.produktname = produktname;
-		this.namenszusatz = namenszusatz;
-		this.zutatenliste = zutatenliste;
-		this.barcode = barcode;
-		this.nutritionFacts = new NutritionFacts(energieJule, energieKalorien, anteilFett,
-				anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil, eiweissAnteil,
-				salzAnteil);
 	}
 	
 	
@@ -135,6 +108,26 @@ public class Label {
 		return "Label [id=" + id + ", grammatur=" + grammatur + ", artikelnummer=" + artikelnummer + ", sortiment="
 				+ sortiment + ", produktname=" + produktname + ", namenszusatz=" + namenszusatz + ", zutatenliste="
 				+ zutatenliste + ", barcode=" + barcode + ", nutritionFacts=" + nutritionFacts + "]";
+	}
+
+
+	public String getBodentext() {
+		return bodentext;
+	}
+
+
+	public void setBodentext(String bodentext) {
+		this.bodentext = bodentext;
+	}
+
+
+	public String getLayout() {
+		return layout;
+	}
+
+
+	public void setLayout(String layout) {
+		this.layout = layout;
 	}
 
 

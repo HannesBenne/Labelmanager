@@ -107,8 +107,10 @@ public class LabelControllerServlet extends HttpServlet {
 		int grammatur = Integer.parseInt(request.getParameter("grammatur"));
 		String artikelnummer = request.getParameter("artikelnummer");
 		String sortiment = request.getParameter("sortiment");
+		String layout = request.getParameter("layout");
 		String produktname = request.getParameter("produktbezeichnung");
-		String namenszusatz = request.getParameter("namenszusatz"); 
+		String namenszusatz = request.getParameter("namenszusatz");
+		String bodentext = request.getParameter("bodentext");
 		String zutatenliste = request.getParameter("zutatenliste");
 		String barcode = request.getParameter("barcode");
 		
@@ -124,10 +126,9 @@ public class LabelControllerServlet extends HttpServlet {
 		NutritionFacts nutritionFacts = new NutritionFacts(energieJule, energieKalorien, anteilFett
 				, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil, eiweissAnteil, salzAnteil);
 		
-		Label label = new Label(id, grammatur, artikelnummer, sortiment, produktname, namenszusatz
-				, zutatenliste, barcode, nutritionFacts);
-		
-		System.out.println("add label" + label.toString());
+		Label label = new Label(id, grammatur, artikelnummer, sortiment, layout, produktname, namenszusatz, 
+				bodentext, zutatenliste, barcode, nutritionFacts);
+				
 		
 		dbUtil.updateLabel(label);
 		 
@@ -160,8 +161,10 @@ public class LabelControllerServlet extends HttpServlet {
 		int grammatur = Integer.parseInt(request.getParameter("grammatur"));
 		String artikelnummer = request.getParameter("artikelnummer");
 		String sortiment = request.getParameter("sortiment");
+		String layout = request.getParameter("layout");
 		String produktname = request.getParameter("produktbezeichnung");
 		String namenszusatz = request.getParameter("namenszusatz"); 
+		String bodentext = request.getParameter("bodentext");
 		String zutatenliste = request.getParameter("zutatenliste");
 		String barcode = request.getParameter("barcode");
 		
@@ -177,10 +180,8 @@ public class LabelControllerServlet extends HttpServlet {
 		NutritionFacts nutritionFacts = new NutritionFacts(energieJule, energieKalorien, anteilFett
 				, anteilGesaettigteFettsaeure, kohlenhydrate, zuckerAnteil, eiweissAnteil, salzAnteil);
 		
-		Label label = new Label(grammatur, artikelnummer, sortiment, produktname, namenszusatz
-				, zutatenliste, barcode, nutritionFacts);
-		
-		System.out.println("add label" + label.toString());
+		Label label = new Label(grammatur, artikelnummer, sortiment, layout, produktname, namenszusatz,
+				bodentext, zutatenliste, barcode, nutritionFacts);
 		
 		dbUtil.addLabel(label);
 		 
