@@ -69,35 +69,35 @@
 				<tbody>		
 					<tr>
 						<td><label>Energie in Joule</label></td>
-						<td><input type = "text" name = "energie_joule" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "energie_joule" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Energie in Kalorien</label></td>
-						<td><input type = "text" name = "energie_kalorien" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "energie_kalorien" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Fettmenge</label></td>
-						<td><input type = "text" name = "fett" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "fett" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Davon ges‰ttigte Fetts‰uren</label></td>
-						<td><input type = "text" name = "gesaettigte_fettsaeuren" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "gesaettigte_fettsaeuren" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Kohlenhydrate</label></td>
-						<td><input type = "text" name = "kohlenhydrate" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "kohlenhydrate" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Zucker</label></td>
-						<td><input type = "text" name = "zucker" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "zucker" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Eiweiﬂ</label></td>
-						<td><input type = "text" name = "eiweiss" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "eiweiss" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Salz</label></td>
-						<td><input type = "text" name = "salz" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "salz" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 				</tbody>
 			</table>

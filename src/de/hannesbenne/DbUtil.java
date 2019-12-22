@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -68,6 +69,7 @@ public class DbUtil {
 		}finally {
 			close(connection, statement, resultSet);
 		}
+		Collections.sort(labels, (s1,s2) -> s1.getProduktname().compareTo(s2.getProduktname()));
 		return labels;
 	}
 
@@ -297,6 +299,7 @@ public class DbUtil {
 			close(connection, preparedStatement, resultSet);
 		}
 		
+		Collections.sort(labels, (s1,s2) -> s1.getProduktname().compareTo(s2.getProduktname()));
 		return labels;
 	}
 

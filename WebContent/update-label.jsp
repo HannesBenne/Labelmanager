@@ -52,7 +52,7 @@
 					</tr>
 					<tr>
 						<td><label>Zutatenliste</label></td>
-						<td><textarea rows="15" cols="31" name = "zutatenliste" required> ${label.zutatenliste} </textarea></td>
+						<td><textarea rows="15" cols="31" name = "zutatenliste" required>${label.zutatenliste}</textarea></td>
 					</tr>
 					<tr>
 						<td><label>Grammatur</label></td>
@@ -69,35 +69,35 @@
 				<tbody>		
 					<tr>
 						<td><label>Energie in Joule</label></td>
-						<td><input type = "text" name = "energie_joule" value = "${label.nutritionFacts.energieJule}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "energie_joule" value = "${label.nutritionFacts.energieJule}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Energie in Kalorien</label></td>
-						<td><input type = "text" name = "energie_kalorien" value = "${label.nutritionFacts.energieKalorien}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "energie_kalorien" value = "${label.nutritionFacts.energieKalorien}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Fettmenge</label></td>
-						<td><input type = "text" name = "fett" value = "${label.nutritionFacts.anteilFett}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "fett" value = "${label.nutritionFacts.anteilFett}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Davon ges‰ttigte Fetts‰uren</label></td>
-						<td><input type = "text" name = "gesaettigte_fettsaeuren" value = "${label.nutritionFacts.anteilGesaettigteFettsaeure}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "gesaettigte_fettsaeuren" value = "${label.nutritionFacts.anteilGesaettigteFettsaeure}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Kohlenhydrate</label></td>
-						<td><input type = "text" name = "kohlenhydrate" value = "${label.nutritionFacts.kohlenhydrate}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "kohlenhydrate" value = "${label.nutritionFacts.kohlenhydrate}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Zucker</label></td>
-						<td><input type = "text" name = "zucker" value = "${label.nutritionFacts.zuckerAnteil}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "zucker" value = "${label.nutritionFacts.zuckerAnteil}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Eiweiﬂ</label></td>
-						<td><input type = "text" name = "eiweiss" value = "${label.nutritionFacts.eiweissAnteil}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "eiweiss" value = "${label.nutritionFacts.eiweissAnteil}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 					<tr>
 						<td><label>Salz</label></td>
-						<td><input type = "text" name = "salz" value = "${label.nutritionFacts.salzAnteil}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{1,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
+						<td><input type = "text" name = "salz" value = "${label.nutritionFacts.salzAnteil}" pattern="[0-9]{1,10}[.]{0,1}[0-9]{0,10}" title="Dezimalzahl mit Punkt als Trennzeichen, bspw. 12.5" required></td>
 					</tr>
 				</tbody>
 			</table>
