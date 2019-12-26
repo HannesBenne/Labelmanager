@@ -1,17 +1,6 @@
 # Labelmanager
 
-implementiert:
+Java Programm zur Verwaltung von Labeldaten in einer MySQL Datenbank. Die View – Ebene wurde mit Java Server Pages und der Controller einem http – Servlet umgesetzt. Im GUI lassen sich Label suchen, ändern, löschen und hinzufügen. Über die Nicelabel Software lassen sich die Labeldaten an Etikettiersysteme senden. 
 
-- Label anzeigen
-- Label hinzufügen
-- Label löschen
-- Label ändern
-- Daten zu Nicelabel verlinken
-
-to do:
-- set up script für Datenbank
-- redesign add-label.jps -> zutatenliste area text, fieldset statt form-label?
-- public key error?
-- Suchfunktion für Labels
-- Labeldaten einpflegen
-
+![](http://hannesbenne.de/images/label1.PNG)
+![](http://hannesbenne.de/images/label2.PNG)
